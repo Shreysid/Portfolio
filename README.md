@@ -1,13 +1,44 @@
-# Afterhours — Shreyas’s portfolio
+# Shreyas's portfolio
 
-A React and Vite portfolio with a procedural binary town. Scroll through an introduction, four career stops, three projects, and contact links.
+[Take a walk through the site](https://shreyas.ink/)
 
-Run `npm install` and `npm run dev`. Run `npm run build` for production.
+My portfolio is a small blue town drawn with 0s and 1s. Scroll to move through the streets, climb a building through my work history, then head down another to explore my projects. The walk ends at street level with ways to get in touch.
 
-The town uses Canvas 2D without models, external fonts, or WebGL effects. Drawing stops at rest and in hidden tabs. Rendering targets at most 30 fps. Canvas size is capped with aspect ratio preserved. Device hints and slow draws automatically reduce detail and resolution.
+The buildings are drawn in code. There are no imported 3D models: React handles the page, and Canvas 2D draws the town.
 
-Reduced-motion preferences hold the scene stationary. Normal HTML content remains scrollable. Edit content in `src/content.js`, the camera route in `src/camera.js`, and the scene in `src/town.js`.
+## Run it locally
 
-Run `node --test tests/*.test.js` for camera and metadata checks. Deployment uses Vercel's Vite configuration in `vercel.json`, with `npm ci`, `npm run build`, and `dist` as output. The production branch is `master`.
+Use Node.js 22.12 or newer and npm.
 
-Documentation and measured performance results are in `docs/`. Local resumes, environment files, build output, and workspace data are not part of the release.
+```sh
+npm ci
+npm run dev
+```
+
+For a production build and local preview:
+
+```sh
+npm run build
+npm run preview
+```
+
+## How it works
+
+Scroll position controls the camera, so you can retrace the route by scrolling back up. The text and links are HTML, separate from the canvas.
+
+Rendering is capped at 30 fps and stops when the scene settles or the tab is hidden. Canvas resolution is bounded, and device hints and slow frames automatically lower the detail. Reduced-motion settings keep the scene still while the page remains scrollable. These choices keep the rendering budget small; they aren't a guarantee of smooth performance on every device.
+
+The main files are:
+
+- `src/content.js`: experience, projects, and contact links.
+- `src/camera.js`: the scroll route and camera transitions.
+- `src/town.js`: buildings, streets, and drawing code.
+- `src/App.jsx` and `src/styles.css`: page layout and rendering controls.
+
+## Deployment
+
+Vercel deploys `master`. The settings in `vercel.json` run `npm ci` and `npm run build`, then serve `dist/`.
+
+SEO metadata is in `index.html`. The canonical URL, `public/robots.txt`, and `public/sitemap.xml` all point to `https://shreyas.ink/`; update them together if the domain changes.
+
+Documentation and tests are kept locally in ignored `docs/` and `tests/` directories and aren't included in a fresh clone. Local resumes, environment files, and build output are ignored too.
