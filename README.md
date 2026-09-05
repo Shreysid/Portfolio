@@ -2,6 +2,8 @@
 
 [Take a walk through the site](https://shreyas.ink/)
 
+I'm Shreyas, a Full-Stack and iOS Engineer. I build web products and native iOS apps, including the backend systems behind them.
+
 My portfolio is a small blue town drawn with 0s and 1s. Scroll to move through the streets, climb a building through my work history, then head down another to explore my projects. The walk ends at street level with ways to get in touch.
 
 The buildings are drawn in code. There are no imported 3D models: React handles the page, and Canvas 2D draws the town.
