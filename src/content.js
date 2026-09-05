@@ -16,8 +16,8 @@ export const experience = [
 ]
 
 export const stops = [
-  { id: 'home', district: 'BLUE HOUR', street: 'Welcome to my corner of the internet', eyebrow: 'SHREYAS SIDDARAJU / BANGALORE', title: 'Built with curiosity.', description: 'Full-Stack & iOS Engineer. Web products, native iOS apps, and the systems underneath.', tags: [], links: [{ label: 'Take a walk', href: '#about' }] },
-  { id: 'about', district: 'THE BUILDER', street: 'A little about me', eyebrow: '01 / ABOUT', title: 'From interface to infrastructure.', description: 'I’m Shreyas, a Full-Stack and iOS Engineer. At StudioDrop, I’m the Founding Full-Stack Engineer. I build web products and native iOS apps, including the backend systems behind them.', tags: ['Go · Java · Python', 'React · Swift', 'AWS · Kubernetes'], links: [{ label: 'Where I’ve worked', href: '#experience' }] },
+  { id: 'home', district: 'BLUE HOUR', street: 'Welcome to my corner of the internet', eyebrow: 'SHREYAS SIDDARAJU / BANGALORE', title: 'Built with curiosity.', description: 'Software engineer. Web, native apps, and the systems underneath.', tags: [], links: [{ label: 'Take a walk', href: '#about' }] },
+  { id: 'about', district: 'THE BUILDER', street: 'A little about me', eyebrow: '01 / ABOUT', title: 'From interface to infrastructure.', description: 'I’m Shreyas, Founding Full-Stack Engineer at StudioDrop. I build backend systems, web products, and native apps. Outside work, I follow ideas worth making.', tags: ['Go · Java · Python', 'React · Swift', 'AWS · Kubernetes'], links: [{ label: 'Where I’ve worked', href: '#experience' }] },
   ...[...experience].reverse().map((job, index) => ({
     id: ['experience', 'freelance', 'cisco', 'studiodrop'][index], group: 'experience',
     district: 'WORKING YEARS', street: `Floor 0${index + 1} / ${job.company === 'Independent' ? 'Freelance' : job.company}`,
