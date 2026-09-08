@@ -37,7 +37,7 @@ The main files are:
 
 ## Deployment
 
-Cloudflare Workers static asset hosting is configured in `wrangler.jsonc` to serve `dist/`. The domain cutover is pending; Vercel remains the live host until it is completed.
+Cloudflare Workers serves `https://shreyas.ink/` from `dist/`, configured in `wrangler.jsonc`. The initial deployment was uploaded through the dashboard on September 8, 2026. The alternate URL is `https://shreyas-portfolio.shreysid2352.workers.dev/`.
 
 To set up analytics, add `shreyas.ink` in Cloudflare Web Analytics, select manual JS snippet installation, and copy the public site token into `.env.local` using `.env.example`. Do not use an account API token. Production builds include the beacon when this value is set; local development does not send analytics. Automatic snippet injection should be disabled to avoid loading the beacon twice.
 
@@ -49,9 +49,9 @@ npm run deploy
 
 The Cloudflare build requires the analytics token, so deployment fails clearly if tracking has not been configured. Regular `npm run build` remains available for local checks without an account.
 
-For automatic Git deployments, connect this repository in Workers Builds, use `master` as the production branch after merging the migration, set the build command to `npm run build:cloudflare`, and the deploy command to `npx wrangler deploy`. Add `VITE_CLOUDFLARE_ANALYTICS_TOKEN` as a build variable. Validate the first workers.dev deployment before attaching `shreyas.ink` as a custom domain. Keep the Vercel deployment available until the domain and analytics are verified.
+Automatic Git deployments are not yet connected. For now, use the CLI commands above or upload a ZIP of the contents of `dist/` through the existing Worker's New deployment screen. To enable automatic deployments, grant the Cloudflare GitHub integration access to this repository, connect it in Workers Builds, use `master` as the production branch after merging the migration, set the build command to `npm run build:cloudflare`, and the deploy command to `npx wrangler deploy`. Add `VITE_CLOUDFLARE_ANALYTICS_TOKEN` as a build variable.
 
-After cutover, load the live site with browser developer tools open. Confirm `beacon.min.js` loads and a beacon request succeeds; navigate away or switch tabs if needed. Check Cloudflare Web Analytics after a few minutes, with the hostname and date filters selected correctly. Repeat visits are not necessarily distinct visitors, and browser blockers can prevent client-side analytics from loading.
+Cloudflare Web Analytics recorded a page view and a visit during cutover verification. To check future deployments, load the live site with browser developer tools open. Confirm `beacon.min.js` loads and a beacon request succeeds; navigate away or switch tabs if needed. Check Cloudflare Web Analytics after a few minutes, with the hostname and date filters selected correctly. Repeat visits are not necessarily distinct visitors, and browser blockers can prevent client-side analytics from loading.
 
 SEO metadata is in `index.html`. The canonical URL, `public/robots.txt`, and `public/sitemap.xml` all point to `https://shreyas.ink/`; update them together if the domain changes.
 
